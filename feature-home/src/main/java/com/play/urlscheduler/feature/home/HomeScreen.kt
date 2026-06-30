@@ -40,6 +40,7 @@ import com.play.urlscheduler.core.ui.components.RotatorTopAppBar
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import androidx.core.net.toUri
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -100,7 +101,7 @@ fun HomeScreen(
                             onClick = {
                                 val intent = Intent(
                                     Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-                                    Uri.parse("package:${context.packageName}")
+                                    "package:${context.packageName}".toUri()
                                 )
                                 context.startActivity(intent)
                             },
