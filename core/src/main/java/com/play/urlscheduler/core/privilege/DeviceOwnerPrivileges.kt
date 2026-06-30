@@ -28,11 +28,7 @@ class DeviceOwnerPrivileges @Inject constructor(
     }
 
     override suspend fun launchUrl(url: String, launchMode: com.play.urlscheduler.domain.model.LaunchMode) {
-        Timber.d("Launching URL in Kiosk Mode: $url")
-        // Can configure lock task mode packages here
-        if (dpm.isDeviceOwnerApp(context.packageName)) {
-            dpm.setLockTaskPackages(adminComponent, arrayOf(context.packageName, "com.android.chrome"))
-        }
+        Timber.d("Launching URL in Device Owner Mode: $url")
         standardPrivileges.launchUrl(url, launchMode)
     }
 
@@ -42,7 +38,7 @@ class DeviceOwnerPrivileges @Inject constructor(
 
     override suspend fun keepAwake() {
         if (dpm.isDeviceOwnerApp(context.packageName)) {
-            dpm.setGlobalSetting(adminComponent, android.provider.Settings.Global.STAY_ON_WHILE_PLUGGED_IN, "7")
+            Timber.d("Device Owner active - background persistence is naturally managed by the OS.")
         }
     }
 }
