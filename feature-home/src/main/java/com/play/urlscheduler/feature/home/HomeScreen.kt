@@ -140,7 +140,7 @@ fun HomeScreen(
                             onClick = {
                                 val intent = Intent(
                                     Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                    Uri.parse("package:${context.packageName}")
+                                    "package:${context.packageName}".toUri()
                                 )
                                 context.startActivity(intent)
                             }
