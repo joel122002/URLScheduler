@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">URL Rotator Accessibility Service enables background execution and bypasses strict activity launch restrictions.</string>
+</resources>
